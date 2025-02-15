@@ -1,7 +1,7 @@
 import 'package:bachmeal/blocs/widgets/buttons/grid_quick_actions.dart';
 import 'package:bachmeal/blocs/widgets/buttons/quick_action_button.dart';
 import 'package:bachmeal/blocs/widgets/cards/delivery_status_card.dart';
-import 'package:bachmeal/blocs/widgets/cards/meal_card_carousel.dart';
+import 'package:bachmeal/blocs/widgets/cards/meal_card_swiper.dart';
 import 'package:bachmeal/blocs/widgets/cards/promotions1.dart';
 import 'package:bachmeal/blocs/widgets/cards/promotions2.dart';
 import 'package:bachmeal/core/theme.dart';
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _screens = [
     const HomeContent(), // Changed from HomeScreen to HomeContent
     OrderHistoryScreen(),
-    const ProfileScreen(),
+    ProfileScreen(),
     const SettingsScreen(),
   ];
 
@@ -83,8 +83,9 @@ class HomeContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildUserAvatar(),
+          //const MealCardCarousel(),
           const SizedBox(height: 10),
-          const MealCardCarousel(),
+          const MealCardSwiper(),
           //_buildSubscriptionStatus(context),
           const SizedBox(height: 10),
           DeliveryStatusCard(

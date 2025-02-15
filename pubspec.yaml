@@ -39,6 +39,9 @@ dependencies:
   table_calendar: ^3.2.0
   flutter_bloc: ^9.0.0
   carousel_slider: ^5.0.0
+  card_swiper: ^3.0.1
+  google_nav_bar: ^5.0.7
+  line_icons: ^2.0.3
 
 dev_dependencies:
   flutter_test:
