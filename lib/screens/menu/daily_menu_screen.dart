@@ -4,14 +4,14 @@ import 'package:bachmeal/blocs/widgets/cards/meal_card.dart';
 import 'package:bachmeal/core/theme.dart';
 import 'package:bachmeal/models/meal.dart';
 
-class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
+class DailyMenuScreen extends StatefulWidget {
+  const DailyMenuScreen({super.key});
 
   @override
-  State<MenuScreen> createState() => _MenuScreenState();
+  State<DailyMenuScreen> createState() => _MenuScreenState();
 }
 
-class _MenuScreenState extends State<MenuScreen> {
+class _MenuScreenState extends State<DailyMenuScreen> {
   late final List<Meal> _meals;
 
   @override

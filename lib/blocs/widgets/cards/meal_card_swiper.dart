@@ -1,3 +1,4 @@
+import 'package:bachmeal/screens/menu/daily_menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 
@@ -28,10 +29,18 @@ class MealCardSwiper extends StatelessWidget {
       height: 150,
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
-          return _buildMealCard(
-            title: meals[index]['title']!,
-            details: meals[index]['details']!,
-            color: meals[index]['color']!,
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const DailyMenuScreen()),
+              );
+            },
+            child: _buildMealCard(
+              title: meals[index]['title']!,
+              details: meals[index]['details']!,
+              color: meals[index]['color']!,
+            ),
           );
         },
         itemCount: meals.length,

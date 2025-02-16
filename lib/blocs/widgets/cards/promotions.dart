@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class Promotions1 extends StatelessWidget {
-  const Promotions1({Key? key}) : super(key: key);
+class Promotions extends StatelessWidget {
+  const Promotions({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +11,10 @@ class Promotions1 extends StatelessWidget {
       children: [
         _buildSectionTitle("Add an Extra Meal"),
         _buildScrollableFoodCards(),
-
         const SizedBox(height: 20),
-
         _buildSectionTitle("New on the Menu"),
         _buildNewMenuCarousel(),
-
         const SizedBox(height: 20),
-
         _buildSpecialOfferCard(),
       ],
     );
@@ -91,7 +87,8 @@ class Promotions1 extends StatelessWidget {
             ),
             child: Text(
               name,
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -145,7 +142,8 @@ class Promotions1 extends StatelessWidget {
           ),
           child: Text(
             name,
-            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
         ),
@@ -175,7 +173,8 @@ class Promotions1 extends StatelessWidget {
         children: [
           const Text(
             "🎉 Special Offer!",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+            style: TextStyle(
+                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           const SizedBox(height: 8),
           const Text(
@@ -183,15 +182,17 @@ class Promotions1 extends StatelessWidget {
             style: TextStyle(fontSize: 16, color: Colors.white70),
           ),
           const SizedBox(height: 10),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.deepPurple,
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.deepPurple,
+              ),
+              onPressed: () {
+                // Handle Referral Logic
+              },
+              child: const Text("Refer Now"),
             ),
-            onPressed: () {
-              // Handle Referral Logic
-            },
-            child: const Text("Refer Now"),
           ),
         ],
       ),
