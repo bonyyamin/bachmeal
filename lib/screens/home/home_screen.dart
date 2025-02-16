@@ -10,7 +10,6 @@ import 'package:bachmeal/screens/payment/order_history_screen.dart';
 import 'package:bachmeal/screens/profile/profile_screen.dart';
 import 'package:bachmeal/screens/profile/settings_screen.dart';
 import 'package:bachmeal/screens/subscription/pause_resume_screen.dart';
-import 'package:bachmeal/screens/subscription/subscription_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -86,7 +85,6 @@ class HomeContent extends StatelessWidget {
           //const MealCardCarousel(),
           const SizedBox(height: 10),
           const MealCardSwiper(),
-          //_buildSubscriptionStatus(context),
           const SizedBox(height: 10),
           DeliveryStatusCard(
             orderTime: DateTime.now().subtract(
@@ -155,58 +153,7 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  Widget _buildSubscriptionStatus(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: AppTheme.lightBeige,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Subscription Status",
-                style: AppTheme.textTheme.headlineMedium,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                "Active Plan: Premium Meals",
-                style: AppTheme.textTheme.bodyLarge,
-              ),
-              Text(
-                "Next Billing Date: March 25, 2025",
-                style:
-                    AppTheme.textTheme.bodyMedium?.copyWith(color: Colors.grey),
-              ),
-            ],
-          ),
-          SizedBox(
-            width: 115,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.gold,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SubscriptionScreen()),
-                );
-              },
-              child: const Text("Update Plan"),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
+  
   /*Widget _buildTodayMenu(BuildContext context) {
     List<String> menuItems = [
       "Grilled Chicken & Veggies",

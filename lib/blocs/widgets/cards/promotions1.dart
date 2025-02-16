@@ -38,10 +38,10 @@ class Promotions1 extends StatelessWidget {
   /// 1️⃣ Scrollable food cards for adding extra meals
   Widget _buildScrollableFoodCards() {
     final List<Map<String, String>> extraMeals = [
-      {"name": "Grilled Salmon", "image": "assets/salmon.jpg"},
-      {"name": "Pasta Carbonara", "image": "assets/pasta.jpg"},
-      {"name": "Vegan Buddha Bowl", "image": "assets/buddha_bowl.jpg"},
-      {"name": "Chicken Stir Fry", "image": "assets/stir_fry.jpg"},
+      {"name": "Grilled Salmon", "image": "assets/images/salmon.jpg"},
+      {"name": "Pasta Carbonara", "image": "assets/images/pasta.jpg"},
+      {"name": "Vegan Buddha Bowl", "image": "assets/images/buddha_bowl.jpg"},
+      {"name": "Chicken Stir Fry", "image": "assets/images/stir_fry.jpg"},
     ];
 
     return SizedBox(
@@ -103,9 +103,9 @@ class Promotions1 extends StatelessWidget {
   /// 2️⃣ Carousel for new dishes on the menu
   Widget _buildNewMenuCarousel() {
     final List<Map<String, String>> newDishes = [
-      {"name": "Sushi Platter", "image": "assets/sushi.jpg"},
-      {"name": "Steak & Veggies", "image": "assets/steak.jpg"},
-      {"name": "Avocado Toast", "image": "assets/avocado_toast.jpg"},
+      {"name": "Sushi Platter", "image": "assets/images/sushi.jpg"},
+      {"name": "Steak & Veggies", "image": "assets/images/steak.jpg"},
+      {"name": "Avocado Toast", "image": "assets/images/avocado_toast.jpg"},
     ];
 
     return CarouselSlider(

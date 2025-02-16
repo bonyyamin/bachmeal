@@ -93,17 +93,17 @@ class Promotions2 extends StatelessWidget {
 
   List<Widget> _extraMeals() {
     return [
-      _buildFoodCard("Extra Chicken Bowl", "assets/chicken_bowl.png"),
-      _buildFoodCard("Extra Salad", "assets/salad.png"),
-      _buildFoodCard("Extra Pasta", "assets/pasta.png"),
+      _buildFoodCard("Extra Chicken Bowl", "assets/images/chicken_bowl.png"),
+      _buildFoodCard("Extra Salad", "assets/images/salad.png"),
+      _buildFoodCard("Extra Pasta", "assets/images/pasta.png"),
     ];
   }
 
   List<Widget> _newMenuItems() {
     return [
-      _buildHighlightCard("Grilled Salmon", "assets/salmon.png"),
-      _buildHighlightCard("Vegan Burger", "assets/vegan_burger.png"),
-      _buildHighlightCard("Quinoa Bowl", "assets/quinoa.png"),
+      _buildHighlightCard("Grilled Salmon", "assets/images/salmon.png"),
+      _buildHighlightCard("Vegan Burger", "assets/images/vegan_burger.png"),
+      _buildHighlightCard("Quinoa Bowl", "assets/images/quinoa.png"),
     ];
   }
 

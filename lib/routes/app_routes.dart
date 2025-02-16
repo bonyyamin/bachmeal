@@ -9,7 +9,7 @@ class AppRoutes {
   static const String register = "/register";
 
   static Map<String, WidgetBuilder> routes = {
-    flash: (context) => FlashScreen(),
+    flash: (context) => SplashScreen(),
     onboarding: (context) => OnboardingScreen(),
     register: (context) => SignUpScreen(),
   };

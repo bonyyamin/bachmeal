@@ -1,53 +1,45 @@
 import 'dart:async';
-import 'package:bachmeal/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-class FlashScreen extends StatefulWidget {
+class SplashScreen extends StatefulWidget {
   @override
-  _FlashScreenState createState() => _FlashScreenState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _FlashScreenState extends State<FlashScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
-    _controller = AnimationController(
-      duration: Duration(seconds: 2),
-      vsync: this,
-    )..forward();
-
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
-
-    Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, AppRoutes.onboarding);
+    Timer(Duration(seconds: 5), () {
+      Navigator.pushReplacementNamed(context, '/onboarding');
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
-      body: Center(
-        child: FadeTransition(
-          opacity: _animation,
-          child: Text(
-            'Your App',
-            style: TextStyle(
-                fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Expanded(
+            child: Center(
+              child: Image.asset('assets/images/logo.png',
+                  width: 200, height: 200),
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50.0),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: LoadingAnimationWidget.inkDrop(
+                color: Color(0xFF36C565),
+                size: 60,
+              ),
+            ),
+          ),
+        ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }

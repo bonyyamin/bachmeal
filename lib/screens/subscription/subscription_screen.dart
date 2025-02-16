@@ -55,12 +55,12 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
     );
   }
 
-  // void _viewInvoices() {
-  //   // Function to navigate or show past invoices
-  //   ScaffoldMessenger.of(context).showSnackBar(
-  //     const SnackBar(content: Text("Viewing past invoices...")),
-  //   );
-  // }
+  void _viewInvoices() {
+    //   // Function to navigate or show past invoices
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Viewing past invoices...")),
+    );
+  }
 
   Widget _buildPlanCard(Map<String, dynamic> plan) {
     bool isCurrentPlan = plan["name"] == _currentPlan;
