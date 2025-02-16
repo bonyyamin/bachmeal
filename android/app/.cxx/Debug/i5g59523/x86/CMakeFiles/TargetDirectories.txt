@@ -1,0 +1,2 @@
+E:/My_Projects/bachmeal/android/app/.cxx/Debug/i5g59523/x86/CMakeFiles/edit_cache.dir
+E:/My_Projects/bachmeal/android/app/.cxx/Debug/i5g59523/x86/CMakeFiles/rebuild_cache.dir

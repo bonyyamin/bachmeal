@@ -10,11 +10,11 @@ class SubscriptionScreen extends StatefulWidget {
 }
 
 class _SubscriptionScreenState extends State<SubscriptionScreen> {
-  String _currentPlan = "Mid Budget"; // Example current plan
+  String _currentPlan = "Standard Plan"; // Example current plan
   String _nextBillingDate = "March 10, 2025";
   final List<Map<String, dynamic>> _plans = [
     {
-      "name": "Low Budget",
+      "name": "Basic Plan",
       "price": "2700 Taka",
       "features": [
         "Basic meal plan",
@@ -23,7 +23,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       ],
     },
     {
-      "name": "Mid Budget",
+      "name": "Standard Plan",
       "price": "3300 Taka",
       "features": [
         "Standard meal plan",
@@ -32,7 +32,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       ],
     },
     {
-      "name": "High Budget",
+      "name": "Premium Plan",
       "price": "4500 Taka",
       "features": [
         "Premium meal plan",

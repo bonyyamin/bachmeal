@@ -1,5 +1,6 @@
 import 'package:bachmeal/blocs/widgets/cards/subscription_status.dart';
 import 'package:bachmeal/core/theme.dart';
+import 'package:bachmeal/screens/payment/payment_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -132,6 +133,12 @@ class ProfileScreen extends StatelessWidget {
         },
         child: Text("Billing History"),
       ),
+      ElevatedButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const PaymentScreen()));
+          },
+          child: Text("Cancel Subscription")),
     ];
   }
 }
