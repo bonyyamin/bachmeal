@@ -1,3 +1,7 @@
+import 'package:bachmeal/screens/settings/about_us.dart';
+import 'package:bachmeal/screens/settings/contact_support.dart';
+import 'package:bachmeal/screens/settings/faq_help_center.dart';
+import 'package:bachmeal/screens/settings/privacy_policy.dart';
 import 'package:flutter/material.dart';
 import 'package:bachmeal/core/theme.dart';
 
@@ -51,45 +55,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
         padding: const EdgeInsets.all(16),
         children: [
           _buildSectionTitle("App Settings"),
-          _buildSwitchTile(
-              "Delivery Updates", deliveryUpdates, (value) => setState(() => deliveryUpdates = value)),
-          _buildSwitchTile(
-              "Promotions", promotions, (value) => setState(() => promotions = value)),
-          _buildSwitchTile(
-              "Order Confirmations", orderConfirmations, (value) => setState(() => orderConfirmations = value)),
+          _buildSwitchTile("Delivery Updates", deliveryUpdates,
+              (value) => setState(() => deliveryUpdates = value)),
+          _buildSwitchTile("Promotions", promotions,
+              (value) => setState(() => promotions = value)),
+          _buildSwitchTile("Order Confirmations", orderConfirmations,
+              (value) => setState(() => orderConfirmations = value)),
           const SizedBox(height: 12),
-
           _buildSectionTitle("Language"),
-          _buildDropdownTile("App Language", selectedLanguage, ["English", "Spanish", "French"],
+          _buildDropdownTile(
+              "App Language",
+              selectedLanguage,
+              ["English", "Spanish", "French"],
               (value) => setState(() => selectedLanguage = value!)),
           const SizedBox(height: 12),
-
           _buildSectionTitle("Theme"),
-          _buildThemeDropdownTile("Theme Mode", selectedTheme, (ThemeMode? value) {
+          _buildThemeDropdownTile("Theme Mode", selectedTheme,
+              (ThemeMode? value) {
             setState(() => selectedTheme = value!);
           }),
           const SizedBox(height: 16),
-
           _buildSectionTitle("Help & Support"),
           _buildListTile("FAQ / Help Center", Icons.help_outline, () {
-            // Navigate to FAQ Page
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const FAQHelpCenter()));
           }),
           _buildListTile("Contact Support", Icons.support_agent, () {
-            // Navigate to Support Page
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ContactSupport()));
           }),
           _buildListTile("About Us", Icons.info_outline, () {
-            // Navigate to About Us Page
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AboutUsPage()));
           }),
-          _buildListTile("Terms & Privacy Policy", Icons.privacy_tip_outlined, () {
-            // Navigate to Terms & Privacy Page
+          _buildListTile("Terms & Privacy Policy", Icons.privacy_tip_outlined,
+              () {
+            // Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         builder: (context) => const PrivacyPolicyPage()));
           }),
           const SizedBox(height: 16),
-
           _buildSectionTitle("Account Actions"),
           _buildListTile("Logout", Icons.logout, () {
             // Handle Logout
           }),
-          _buildListTile("Delete Account", Icons.delete_outline, _confirmDeleteAccount, color: Colors.red),
+          _buildListTile(
+              "Delete Account", Icons.delete_outline, _confirmDeleteAccount,
+              color: Colors.red),
         ],
       ),
     );
@@ -111,18 +126,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildDropdownTile(String title, String value, List<String> options, Function(String?) onChanged) {
+  Widget _buildDropdownTile(String title, String value, List<String> options,
+      Function(String?) onChanged) {
     return ListTile(
       title: Text(title, style: AppTheme.textTheme.bodyLarge),
       trailing: DropdownButton<String>(
         value: value,
-        items: options.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
+        items: options
+            .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+            .toList(),
         onChanged: onChanged,
       ),
     );
   }
 
-  Widget _buildThemeDropdownTile(String title, ThemeMode value, Function(ThemeMode?) onChanged) {
+  Widget _buildThemeDropdownTile(
+      String title, ThemeMode value, Function(ThemeMode?) onChanged) {
     return ListTile(
       title: Text(title, style: AppTheme.textTheme.bodyLarge),
       trailing: DropdownButton<ThemeMode>(
@@ -130,17 +149,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
         items: [
           DropdownMenuItem(value: ThemeMode.light, child: Text("Light")),
           DropdownMenuItem(value: ThemeMode.dark, child: Text("Dark")),
-          DropdownMenuItem(value: ThemeMode.system, child: Text("System Default")),
+          DropdownMenuItem(
+              value: ThemeMode.system, child: Text("System Default")),
         ],
         onChanged: onChanged,
       ),
     );
   }
 
-  Widget _buildListTile(String title, IconData icon, VoidCallback onTap, {Color? color}) {
+  Widget _buildListTile(String title, IconData icon, VoidCallback onTap,
+      {Color? color}) {
     return ListTile(
       leading: Icon(icon, color: color ?? AppTheme.darkGray),
-      title: Text(title, style: AppTheme.textTheme.bodyLarge?.copyWith(color: color)),
+      title: Text(title,
+          style: AppTheme.textTheme.bodyLarge?.copyWith(color: color)),
       trailing: const Icon(Icons.arrow_forward_ios, size: 16),
       onTap: onTap,
     );

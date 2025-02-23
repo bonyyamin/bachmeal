@@ -1,22 +1,25 @@
 import 'package:bachmeal/blocs/widgets/cards/subscription_status.dart';
 import 'package:bachmeal/core/theme.dart';
-import 'package:bachmeal/screens/payment/payment_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Profile"),
+        backgroundColor: AppTheme.gold,
+      ),
       backgroundColor: AppTheme.offWhite,
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildProfileHeader(),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SubscriptionStatus(),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildBillingInformation(context),
           ],
         ),
@@ -26,32 +29,34 @@ class ProfileScreen extends StatelessWidget {
 
   Widget _buildProfileHeader() {
     return Container(
-      padding: EdgeInsets.only(left: 10, top: 60, bottom: 20),
+      padding: const EdgeInsets.only(left: 10, top: 40, bottom: 20),
       child: Row(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 40,
                 backgroundColor: Colors.white,
-                child:
-                    Image.asset('assets/images/avatar.png', fit: BoxFit.cover),
+                child: Image(
+                  image: AssetImage('assets/images/avatar.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
-              SizedBox(height: 10),
-              Text("Tobi Lateef", style: AppTheme.textTheme.displaySmall),
-              SizedBox(height: 5),
+              const SizedBox(height: 10),
+              Text("Bony Yamin", style: AppTheme.textTheme.displaySmall),
+              const SizedBox(height: 5),
             ],
           ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildInfoRow("Profession", "Student"),
-              _buildInfoRow("Contact", "+88 01706 846868"),
-              _buildInfoRow("Location", "Sirajganj"),
-              _buildInfoRow("Subscription Status", "Premium User"),
+              _buildInfoRow(Icons.work, "Profession", "Student"),
+              _buildInfoRow(Icons.phone, "Contact", "+88 01706 846868"),
+              _buildInfoRow(Icons.location_on, "Location", "Sirajganj"),
+              _buildInfoRow(Icons.star, "Subscription Status", "Premium User"),
             ],
           ),
         ],
@@ -59,20 +64,19 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoRow(String title, String subtitle) {
+  Widget _buildInfoRow(IconData icon, String title, String subtitle) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsets.only(bottom: 5),
+      child: Row(
         children: [
+          Icon(icon, color: AppTheme.darkGray, size: 20),
+          const SizedBox(width: 8),
           Text(
-            title,
-            style: TextStyle(fontSize: 18, color: AppTheme.darkGray),
+            "$title: ",
+            style: AppTheme.textTheme.bodyLarge
+                ?.copyWith(fontWeight: FontWeight.w600),
           ),
-          Text(
-            subtitle,
-            style: AppTheme.textTheme.bodyLarge?.copyWith(color: AppTheme.gold),
-          ),
+          Text(subtitle, style: AppTheme.textTheme.bodyMedium),
         ],
       ),
     );
@@ -83,37 +87,35 @@ class ProfileScreen extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Padding(
-        padding: EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min, // Prevent unnecessary expansion
-            children: [
-              Text(
-                "Billing Information",
-                style: AppTheme.textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10),
-              _buildInfoRow("Next Billing Date", "March 15, 2025"),
-              _buildInfoRow("Payment Method", "Credit Card ending in ****1234"),
-              SizedBox(height: 15),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  return constraints.maxWidth > 400
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: _buildButtonRow(context),
-                        )
-                      : Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: _buildButtonRow(context),
-                        );
-                },
-              ),
-            ],
-          ),
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Billing Information",
+              style: AppTheme.textTheme.headlineMedium
+                  ?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            _buildInfoRow(
+                Icons.calendar_today, "Next Billing Date", "March 15, 2025"),
+            _buildInfoRow(Icons.payment, "Payment Method",
+                "Credit Card ending in ****1234"),
+            const SizedBox(height: 15),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                return constraints.maxWidth > 400
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: _buildButtonRow(context),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: _buildButtonRow(context),
+                      );
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -125,20 +127,14 @@ class ProfileScreen extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, "/update-payment");
         },
-        child: Text("Update Payment Method"),
+        child: const Text("Update Payment Method"),
       ),
       ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, "/billing-history");
         },
-        child: Text("Billing History"),
+        child: const Text("Billing History"),
       ),
-      ElevatedButton(
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const PaymentScreen()));
-          },
-          child: Text("Cancel Subscription")),
     ];
   }
 }

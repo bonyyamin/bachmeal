@@ -1,10 +1,10 @@
 import 'package:bachmeal/screens/package_details/package_overview_section.dart';
+import 'package:bachmeal/screens/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bachmeal/core/theme.dart';
 import 'package:bachmeal/screens/payment/order_history_screen.dart';
 import 'package:bachmeal/screens/profile/profile_screen.dart';
-import 'package:bachmeal/screens/profile/settings_screen.dart';
 import 'package:bachmeal/blocs/widgets/buttons/grid_quick_actions.dart';
 import 'package:bachmeal/blocs/widgets/cards/announcments.dart';
 import 'package:bachmeal/blocs/widgets/cards/delivery_status_card.dart';
@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const HomeContent(),
     OrderHistoryScreen(),
     ProfileScreen(),
-    const SettingsScreen(),
+    SettingsScreen(),
   ];
 
   @override

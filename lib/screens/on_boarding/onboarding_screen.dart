@@ -124,7 +124,7 @@ class OnboardingView extends StatelessWidget {
                             ),
                             onPressed: () {
                               Navigator.pushReplacementNamed(
-                                  context, "/register");
+                                  context, "/takinginfo");
                             },
                             child: Text("Get Started"),
                           ),
