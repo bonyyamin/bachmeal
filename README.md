@@ -62,7 +62,8 @@ Flutter-based meal delivery app for bachelor employees and students. Solves cook
 *   **State Management (Flutter):** BLoC Pattern
 
 
-
-## Copyright (c) 2025 Bony Yamin
+## LICENSE
+*   **Copyright (c) 2025 Bony Yamin**
+*   CC BY-NC (Attribution-NonCommercial): Allows others to copy, distribute, display, perform, and modify your work, but only for **non-commercial** purposes.
 
 This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
