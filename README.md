@@ -1,6 +1,7 @@
+# My Awesome Meal Delivery App
 # bachmeal
 
-A new Flutter project.
+Say Goodbye to Cooking Stress - Delicious Meals Delivered Daily
 
 ## Getting Started
 
