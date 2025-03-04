@@ -1,8 +1,9 @@
 import 'package:bachmeal/core/theme.dart';
+import 'package:bachmeal/screens/on_boarding/taking_information_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// Bloc for handling page state
+// Bloc for handling onboarding state
 class OnboardingCubit extends Cubit<int> {
   OnboardingCubit() : super(0);
 
@@ -16,6 +17,7 @@ class OnboardingScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => OnboardingCubit(),
       child: Scaffold(
+        backgroundColor: AppTheme.offWhite,
         body: OnboardingView(),
       ),
     );
@@ -28,21 +30,21 @@ class OnboardingView extends StatelessWidget {
   final List<Map<String, String>> pages = [
     {
       "image": "assets/images/onb_1.png",
-      "title": "Find Best Musicians All Around Your City",
+      "title": "Find Best Meal Plans Around You",
       "subtitle":
-          "Thousands of musicians around you are waiting to rock your event.",
+          "Get the best subscription-based meal plans designed for busy professionals and students.",
     },
     {
       "image": "assets/images/onb_2.png",
-      "title": "Fastest Way To Book Great Musicians",
+      "title": "Fast & Reliable Food Delivery",
       "subtitle":
-          "Find the perfect match to perform for your event and make the day remarkable.",
+          "Never worry about cooking again—enjoy fresh, homemade meals delivered daily to your doorstep.",
     },
     {
       "image": "assets/images/onb_3.png",
-      "title": "Find Top Sessions Pros For Your Event",
+      "title": "Customize Your Meal Preferences",
       "subtitle":
-          "Find the perfect match to perform for your event and make the day remarkable.",
+          "Choose from flexible packages that match your dietary needs and budget.",
     },
   ];
 
@@ -72,23 +74,9 @@ class OnboardingView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: state < pages.length - 1
                     ? [
-                        // Skip Button
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, "/home");
-                          },
-                          child: Text(
-                            "Skip",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .copyWith(color: AppTheme.darkGray),
-                          ),
-                        ),
-
                         // Next Button
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -97,16 +85,16 @@ class OnboardingView extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 12),
                           ),
                           onPressed: () {
                             _pageController.nextPage(
-                              duration: Duration(milliseconds: 400),
+                              duration: const Duration(milliseconds: 400),
                               curve: Curves.easeInOut,
                             );
                           },
-                          child: Text("Next"),
+                          child: const Text("Next"),
                         ),
                       ]
                     : [
@@ -119,14 +107,17 @@ class OnboardingView extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 14, horizontal: 30),
                             ),
                             onPressed: () {
-                              Navigator.pushReplacementNamed(
-                                  context, "/takinginfo");
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => TakingInformationScreen()),
+                              );
                             },
-                            child: Text("Get Started"),
+                            child: const Text("Get Started"),
                           ),
                         ),
                       ],
@@ -166,16 +157,16 @@ class OnboardingPage extends StatelessWidget {
             flex: 4,
             child: Image.asset(image),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
-          // Indicator Dots Centered Below Image
+          // Indicator Dots
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
               totalPages,
               (index) => AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                margin: EdgeInsets.symmetric(horizontal: 4),
+                duration: const Duration(milliseconds: 300),
+                margin: const EdgeInsets.symmetric(horizontal: 4),
                 height: 8,
                 width: currentIndex == index ? 20 : 8,
                 decoration: BoxDecoration(
@@ -186,21 +177,18 @@ class OnboardingPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           Text(
             title,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.displaySmall,
+            style: AppTheme.textTheme.displaySmall,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(color: Colors.grey),
+            style: AppTheme.textTheme.bodyMedium?.copyWith(color: Colors.grey),
           ),
         ],
       ),

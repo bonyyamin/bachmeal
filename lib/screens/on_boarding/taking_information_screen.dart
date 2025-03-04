@@ -264,7 +264,11 @@ class _TakingInformationScreenState extends State<TakingInformationScreen> {
     return ElevatedButton(
       onPressed: () {
         if (_formKey.currentState!.validate() && _acceptTerms) {
-          // Proceed with signup logic
+          // Proceed to next screen
+          Navigator.pushNamed(context, "/register");
+        } else if (!_acceptTerms) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Please accept the terms.")));
         }
       },
       child: const Text("Confirm & Proceed"),

@@ -1,3 +1,4 @@
+import 'package:bachmeal/global_state.dart';
 import 'package:bachmeal/screens/package_details/package_overview_section.dart';
 import 'package:bachmeal/screens/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _prefs = await SharedPreferences.getInstance();
     await _checkFirstTimeUser();
     await _loadBannerState();
+    _loadProfileImage();
   }
 
   Future<void> _checkFirstTimeUser() async {
@@ -56,6 +58,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _loadBannerState() async {
     bool showBanner = _prefs.getBool('showMinimizedBanner') ?? false;
     setState(() => _showMinimizedBanner = showBanner);
+  }
+
+  Future<void> _loadProfileImage() async {
+    // Load user profile image from API
+    String? imagePath = _prefs.getString('profile_image');
+    profileImageNotifier.value = imagePath;
   }
 
   void _showWelcomePopup() {

@@ -46,11 +46,6 @@ class SignUpScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             CustomTextField(
-              hintText: "Name",
-              icon: Icons.person_outline,
-            ),
-            const SizedBox(height: 12),
-            CustomTextField(
               hintText: "Password",
               icon: Icons.lock_outline,
               isPassword: true,

@@ -92,10 +92,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           }),
           _buildListTile("Terms & Privacy Policy", Icons.privacy_tip_outlined,
               () {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) => const PrivacyPolicyPage()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const PrivacyPolicyPage()));
           }),
           const SizedBox(height: 16),
           _buildSectionTitle("Account Actions"),

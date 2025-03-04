@@ -46,6 +46,7 @@ dependencies:
   gif_view: ^1.0.0
   shared_preferences: ^2.5.2
   geolocator: ^13.0.2
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
